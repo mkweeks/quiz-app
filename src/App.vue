@@ -106,7 +106,6 @@ export default {
       this.question = null
 
       this.res = await axios.get('https://the-trivia-api.com/v2/questions')
-      console.log(this.res)
 
       this.question = this.res.data[0].question.text
       this.answer = this.res.data[0].correctAnswer
@@ -127,7 +126,6 @@ export default {
 
     this.question = this.res.data[0].question.text
     this.answer = this.res.data[0].correctAnswer
-    console.log(this.res)
 
     for (let i = 0; i < this.res.data[0].incorrectAnswers.length; i++) {
       this.answers.push(this.res.data[0].incorrectAnswers[i])
