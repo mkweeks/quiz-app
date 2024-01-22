@@ -106,6 +106,7 @@ export default {
       this.question = null
 
       this.res = await axios.get('https://the-trivia-api.com/v2/questions')
+      console.log(this.res)
 
       this.question = this.res.data[0].question.text
       this.answer = this.res.data[0].correctAnswer
@@ -126,6 +127,7 @@ export default {
 
     this.question = this.res.data[0].question.text
     this.answer = this.res.data[0].correctAnswer
+    console.log(this.res)
 
     for (let i = 0; i < this.res.data[0].incorrectAnswers.length; i++) {
       this.answers.push(this.res.data[0].incorrectAnswers[i])
@@ -147,9 +149,36 @@ export default {
   overflow: hidden;
 }
 
-dialog {
-  width: 100px;
-  height: 200px;
+.congrats {
+  background: #fff175;
+  width: 300px;
+  height: 300px;
+  margin: auto;
+  position: absolute;
+  max-width: calc(100% - 60px);
+  border: none;
+}
+
+.congrats::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  top: 20px;
+  left: 20px;
+  border-radius: inherit;
+  background: repeating-linear-gradient(45deg,
+      rgb(212, 196, 129),
+      rgb(212, 196, 129) 2px,
+      transparent 2px,
+      transparent 6px);
+  transition: all 0.3s ease;
+}
+
+.congrats:hover::before {
+  top: 40px;
+  left: 40px;
 }
 
 .timer {
